@@ -1,0 +1,4 @@
+db_name: rails5-training_development
+db_user: root
+db_pass: hoge
+db_host: "%"

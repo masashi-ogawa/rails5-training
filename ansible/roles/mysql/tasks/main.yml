@@ -1,0 +1,40 @@
+---
+- name: install mysql rpm
+  yum: name=http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm state=present
+  tags:
+    - mysql
+
+- name: install mysql
+  yum: name={{item}} state=present
+  with_items:
+    - mysql-community-server
+    - mysql-devel
+  tags:
+    - mysql
+
+- name: install mysql python
+  yum: name=MySQL-python state=present
+  tags:
+    - mysql
+
+- name: set my.cnf
+  copy: src=my.cnf dest=/etc/my.cnf owner=root group=root mode=644
+  notify: restart mysql
+  tags:
+    - mysql
+    - mysql_conf
+
+- name: start mysqld
+  service: name=mysqld state=started enabled=yes
+  tags:
+    - mysql
+
+- name: create database
+  mysql_db: db={{db_name}} state=present encoding=utf8
+  tags:
+    - mysql
+
+- name: mysql user
+  mysql_user: name={{db_user}} password={{db_pass}} host={{db_host}} priv=*.*:ALL state=present
+  tags:
+    - mysql
