@@ -1,2 +1,8 @@
-<h1>Demo#index</h1>
-<p>Find me in app/views/demo/index.html.erb</p>
+<div id="demo">
+  <form id="search">
+    Search <input name="query" v-model="searchQuery">
+  </form>
+  <demo-grid v-bind:data="gridData"
+             v-bind:columns="gridColumns"
+             v-bind:filter-key="searchQuery"></demo-grid>
+</div>
