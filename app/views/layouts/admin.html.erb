@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rails5Training</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'admin/application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'admin/application', 'data-turbolinks-track': 'reload' %>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  </head>
+
+  <body class="hold-transition skin-blue sidebar-mini">
+    <%= yield %>
+  </body>
+</html>
